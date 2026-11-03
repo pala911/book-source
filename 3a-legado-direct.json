@@ -33,12 +33,12 @@
       "name": "$.articlename##<\\/?em>"
     },
     "ruleToc": {
-      "chapterList": "<js>\nresult=AAACS.font(result)\n</js>$.chapters",
+      "chapterList": "<js>\nvar hh=\"none\";var mm=/\\/static\\/fonts\\/([0-9a-f]{8,32})/.exec(result||\"\");if(mm)hh=mm[1].substring(0,8);\nresult=AAACS.font(result);\ntry{var o=JSON.parse(result);var ok=0;for(var i=0;i<o.chapters.length;i++){if(o.chapters[i].title.indexOf(\"\\u7ae0\")>=0)ok++;}if(o.chapters.length&&ok/o.chapters.length<0.3){o.chapters[0].title=\"[BAD h=\"+hh+\" ok=\"+ok+\"/\"+o.chapters.length+\"] \"+o.chapters[0].title;result=JSON.stringify(o);}}catch(e){}\n</js>$.chapters",
       "chapterName": "$.title",
       "chapterUrl": "{{baseUrl.replace('chapterlist','chapter').replace('?format=g2','')}}-{{$.cid}}?format=g2"
     },
     "searchUrl": "/api-search?keyword={{key}}&page={{page}}&size=10",
     "weight": 0,
-    "bookSourceComment": "直连版(自动更新 2026-11-03)：字体由 header 里 reader_guard_id cookie 钉死；内嵌映射对应字体 /static/fonts/8591bf955c8723dd08aa5d50ab6aa777cbfbbd829e983c70.woff2。若再次出现乱码说明站点机制变了，请反馈维护者。"
+    "bookSourceComment": "诊断版 2026-11-03：目录解码异常时第一章标题会带 [BAD h=xxxxxxxx ok=n/m]，把整段标题截图反馈。直连版(自动更新 2026-11-03)：字体由 header 里 reader_guard_id cookie 钉死；内嵌映射对应字体 /static/fonts/8591bf955c8723dd08aa5d50ab6aa777cbfbbd829e983c70.woff2。若再次出现乱码说明站点机制变了，请反馈维护者。"
   }
 ]
